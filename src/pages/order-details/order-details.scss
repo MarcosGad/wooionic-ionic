@@ -1,0 +1,57 @@
+page-order-details {
+
+    .toolbar-title-md{
+        padding: 0; 
+    }
+    
+    .toolbar-background-md{
+        background-color: #000; 
+    }
+     
+    .toolbar-title-md,.bar-button-default-md{
+        color: #fff; 
+    }
+
+    .bar-button-default-md:hover:not(.disable-hover), 
+    .bar-button-clear-md-default:hover:not(.disable-hover),
+    .bar-button-md-default:hover:not(.disable-hover){
+        color: #fff; 
+    }
+
+    .item-md p , .card-md p{
+        font-size: 1.6rem; 
+        margin-bottom: 5px;
+        font-weight: bold;
+    } 
+    .card-md{
+        margin: 12px; 
+    }
+    
+    .card-md p.order-d{
+        color: #666;
+    }
+    
+    .item-md{
+        padding: 12px; 
+    }
+
+    .oeder-span{
+        font-weight: normal;  
+    }
+    .span-color{
+        color: #000; 
+    }
+
+    .button-md-danger{
+        margin-top: 0; 
+    }
+    
+    ion-icon{
+        position: relative;
+        top: 4px;
+    }
+    
+    .color-p {
+        color: #f28500; 
+    }
+}

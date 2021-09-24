@@ -1,0 +1,131 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>الدفع</ion-title>
+    </ion-navbar>
+</ion-header>
+  
+<ion-content>
+
+  <ion-list>
+
+    <form [formGroup]="todo">
+
+      <ion-item>
+        <ion-label>الأسم الاول *</ion-label>
+        <ion-input dir="rtl" formControlName="reqone" type="text" [(ngModel)]="newOrder.billing.first_name"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>الأسم الأخير *</ion-label>
+        <ion-input dir="rtl" formControlName="reqtwo" type="text" [(ngModel)]=newOrder.billing.last_name></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>البريد الألكترونى *</ion-label>
+        <ion-input dir="rtl" formControlName="reqthree" readonly type="email" [(ngModel)]=newOrder.email></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>رقم المحمول *</ion-label>
+        <ion-input dir="rtl" formControlName="reqnine" type="tel" clearInput [(ngModel)]="newOrder.billing.phone"></ion-input>
+      </ion-item>
+      
+      <ion-item-divider style="padding-right: 8px;" color="danger">تفاصيل العنوان</ion-item-divider>
+
+      <ion-item>
+          <ion-label>البلد *</ion-label>
+          <ion-select okText="اختيار" cancelText="الفاء" formControlName="reqfour" [(ngModel)]="newOrder.billing.country">
+            <ion-option value="Egypt">مصر</ion-option>
+          </ion-select>
+      </ion-item>
+    
+        
+        <ion-item>
+          <ion-label>المحافظة *</ion-label>
+          <ion-select okText="اختيار" cancelText="الفاء" formControlName="reqfive" [(ngModel)]="newOrder.billing.state">
+            <ion-option value="Cario">القاهرة</ion-option>
+            <ion-option value="Giza">الجيزة</ion-option>
+          </ion-select>
+        </ion-item>
+  
+      <ion-item>
+          <ion-label>العنوان *</ion-label>
+          <ion-textarea dir="rtl" formControlName="reqsix" type="text" maxlength="80" [(ngModel)]=newOrder.billing.address_1></ion-textarea> 
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>الرمز البريدي</ion-label>
+        <ion-input dir="rtl" formControlName="reqeight" type="number" clearInput [(ngModel)]="newOrder.billing.postcode"></ion-input>
+      </ion-item>
+
+    </form>
+
+   
+      <ion-item>
+        <ion-label>استخدام عنوان الشحن</ion-label>
+        <ion-checkbox (ionChange)="setBillingToShipping()"></ion-checkbox>
+      </ion-item>
+
+      <form [formGroup]="todoTwo">
+
+      <ion-item-divider style="padding-right: 8px;" color="danger" *ngIf="!billing_shipping_same">تفاصيل عنوان الشحن</ion-item-divider>
+  
+      <ion-item *ngIf="!billing_shipping_same">
+        <ion-label>الأسم الأول *</ion-label>
+        <ion-input dir="rtl" formControlName="reqten" type="text" [(ngModel)]="newOrder.shipping.first_name"></ion-input>
+      </ion-item>
+  
+      <ion-item *ngIf="!billing_shipping_same">
+          <ion-label>الأسم الأخير *</ion-label>
+          <ion-input dir="rtl" formControlName="reqeleven" type="text" [(ngModel)]="newOrder.shipping.last_name"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!billing_shipping_same">
+          <ion-label>البلد *</ion-label>
+          <ion-select okText="اختيار" cancelText="الفاء" formControlName="reqtwelve" [(ngModel)]="newOrder.shipping.country">
+            <ion-option value="Egypt">مصر</ion-option>
+          </ion-select>
+        </ion-item>
+    
+        <ion-item *ngIf="!billing_shipping_same">
+          <ion-label>المحافظة *</ion-label>
+          <ion-select okText="اختيار" cancelText="الفاء" formControlName="reqthirteen" [(ngModel)]="newOrder.shipping.state">
+            <ion-option value="Cario">القاهرة</ion-option>
+            <ion-option value="Giza">الجيزة</ion-option>
+          </ion-select>
+        </ion-item>
+  
+      <ion-item *ngIf="!billing_shipping_same">
+          <ion-label>العنوان *</ion-label>
+          <ion-textarea dir="rtl" formControlName="reqfourteen" type="text" maxlength="80" [(ngModel)]="newOrder.shipping.address_1"></ion-textarea>
+      </ion-item>
+    
+      <ion-item *ngIf="!billing_shipping_same">
+          <ion-label>الرمز البريدي</ion-label>
+          <ion-input dir="rtl" formControlName="reqsixteen" type="number" clearInput [(ngModel)]="newOrder.shipping.postcode"></ion-input>
+      </ion-item>
+
+    </form>
+
+    <ion-item-divider style="padding-right: 8px;" hidden color="danger">بيانات الدفع</ion-item-divider>
+     <ion-item hidden>
+       <ion-label>طريقة الدفع </ion-label>
+       <ion-select okText="اختيار" cancelText="الفاء" [(ngModel)]="paymentMethod" interface="action-sheet">
+        <ion-option *ngFor="let p of paymentMethods" value="{{p.method_id}}">{{ p.method_title }}</ion-option>
+      </ion-select>
+     </ion-item> 
+      
+    </ion-list>
+  
+
+  </ion-content>
+
+  <ion-footer *ngIf="!billing_shipping_same">
+      <button [disabled]="!todoTwo.valid" ion-button block color="danger" (click)="placeOrder()">ارسال</button>
+  </ion-footer>
+  
+  <ion-footer *ngIf="billing_shipping_same">
+    <button [disabled]="!todo.valid" ion-button block color="danger" (click)="placeOrder()">ارسال</button>
+  </ion-footer>
+
+

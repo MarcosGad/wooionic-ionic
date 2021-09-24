@@ -1,0 +1,28 @@
+page-edituser {
+
+    .button-md-danger{
+         background-color: #f28500; 
+     }
+
+     .edit-btn{
+        width: 80%;
+        display: block;
+        margin: auto;
+        margin-top: 20px; 
+    }
+
+    .img-av{
+        text-align: center; 
+    }
+
+    .img-av img{
+        border-radius: 50%;
+        width: 110px;
+    }
+
+    .button-md-danger:hover:not(.disable-hover){
+        background-color: #f28500; 
+    }
+
+}
+

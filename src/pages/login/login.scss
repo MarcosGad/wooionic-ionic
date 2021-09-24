@@ -1,0 +1,43 @@
+page-login {
+
+    .login-btn{
+        width: 80%;
+        display: block;
+        margin: auto;
+        background-color: #f28500; 
+    }
+
+    .login-btn-two,
+    .button-md-dark:hover:not(.disable-hover){
+        width: 80%;
+        display: block;
+        margin: auto;
+        background-color: #3c5a99;; 
+    }
+
+    .forget-p{
+        font-size: 15px;
+        font-weight: bold;
+        text-align: right;
+        padding: 15px;
+    }
+
+    .button-md-danger:hover:not(.disable-hover){
+        background-color: #f28500; 
+    }
+
+    .button-clear-md-danger:hover:not(.disable-hover) {
+        color: #f28500;
+        background-color: #fff;
+    }
+
+    .list-md{
+        margin-top: 70px; 
+    }
+
+    .button-clear-md-danger{
+        color: #f28500;
+    }
+
+}
+

@@ -1,0 +1,131 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>سلة المشتريات
+        <ion-fab left top>
+            <ion-badge color="dark">{{ nbstatic }}</ion-badge>
+            <button ion-fab color="danger"><ion-icon class="cart" name="cart"></ion-icon></button>
+        </ion-fab>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+ 
+  <ion-card [hidden]="!showEmptyCartMessage">
+    <ion-grid>
+      <ion-row>
+        <ion-col>لا توجد منتجات في سلة التسوق الخاصة بك!</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+  <ion-card class="marg" *ngFor="let item of cartItems; let i = index">
+    <ion-item color="light">
+
+      <ion-thumbnail item-left (click)="openProductPage(item.product)">
+        <img [src]="item.product.images[0].src" style="width: 60px !important; height: 60px !important;"/>
+      </ion-thumbnail>
+      <h2>{{ item.product.name }}</h2>
+
+      <p *ngIf="item.variation"><span *ngFor="let att of item.variation.attributes">{{ att.option | titlecase }} &nbsp;</span></p>
+      <p *ngIf="!item.variation"> <span *ngFor="let attr of item.product.attributes"><span *ngFor="let option of attr.options">{{ option | titlecase }} &nbsp;</span></span></p>
+
+      <p>{{ item.qty }} • 
+        <span *ngIf="!item.variation">{{ item.product.price }}</span>
+        <span *ngIf="item.variation">{{ item.variation.price }}</span></p>
+
+
+    </ion-item>
+
+    <ion-item class="compact">
+      <ion-row no-padding>
+        <ion-col col-8>
+          <button ion-button icon-only clear color="danger" (click)="changeQty(item, i, -1)">
+            <ion-icon name="remove-circle"></ion-icon>
+          </button>
+          <button ion-button clear color="danger"> {{ item.qty }} </button>
+          <button ion-button icon-only clear color="danger" (click)="changeQty(item, i, 1)">
+            <ion-icon name="add-circle"></ion-icon>
+          </button>
+        </ion-col>
+
+        <ion-col col-4 style="text-align: right;">
+          <button  (click)="removeFromCart(item, i)" style="background-color: #000; border-color: #000; width:65px;" ion-button outline color="danger">
+            <span class="dele"><ion-icon name="trash"></ion-icon></span>
+          </button>
+        </ion-col>
+        
+      </ion-row>
+    </ion-item>
+  </ion-card>
+
+
+
+ 
+  <ion-grid [hidden]="showEmptyCartMessage">
+    <ion-card>
+        <p class="coupon-p">هل لديك قسيمة ؟</p>   
+      <ion-grid>
+        <form [formGroup]="todo">
+        <ion-row>
+          <ion-col col-8>                        
+              <ion-item>
+                  <ion-input required type="text"  formControlName="title" [(ngModel)]="newCo.code"></ion-input>
+              </ion-item>
+           </ion-col>
+           <ion-col col-4>    
+              <button class="coupon" [disabled]="!todo.valid" ion-button color="danger" block (click)="newCoo()">تطبيق</button>
+            </ion-col>
+          </ion-row>
+        </form>
+        </ion-grid>
+      </ion-card>
+    </ion-grid> 
+    
+
+    <ion-grid [hidden]="showEmptyCartMessage">
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <b>المجموع الفرعى</b>
+            </ion-col>
+            <ion-col col-6 style="text-align: right">
+                <b> EGP {{ total }} </b>
+            </ion-col>
+
+            <ion-col col-6>
+              <b>خصم</b>
+            </ion-col>
+            <ion-col col-6 style="text-align: right">
+                <b> - EGP {{ discount }} </b>
+            </ion-col>
+
+            <ion-col col-6>
+              <b>المجموع</b>
+            </ion-col>
+            <ion-col col-6 style="text-align: right">
+                <b> EGP {{ total - discount }} </b>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-grid>
+
+</ion-content>
+
+<ion-footer class="cart-bk" [hidden]="showEmptyCartMessage">
+        <button ion-button color="danger" block (click)="checkout(codeDs)"> التالى </button>
+</ion-footer>
+
+<ion-footer class="cart-bk" [hidden]="!showEmptyCartMessage">
+            <button ion-button color="danger" block (click)="backtoshoping()">العودة إلى التسوق  
+            </button>
+</ion-footer>
+

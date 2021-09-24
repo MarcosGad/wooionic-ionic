@@ -1,0 +1,89 @@
+page-cart {
+
+    .toolbar-title-md{
+        padding: 0; 
+    }
+    
+    .marg{
+        margin-top: 20px; 
+    }
+    
+    .toolbar-background-md{
+        background: #000;
+    }
+
+    .toolbar-title-md{
+        color: #fff; 
+    }
+
+    .bar-button-default-md,.bar-button-default-md:hover:not(.disable-hover), 
+    .bar-button-clear-md-default:hover:not(.disable-hover),
+    .bar-button-md-default:hover:not(.disable-hover){
+        color: #fff;
+     }
+
+     .button-md-danger{
+         margin-top: 4px; 
+     }
+
+     .cart-bk .toolbar-background-md,
+     .button-md-danger{
+        background-color: #f28500; 
+    }
+
+    .button-md-danger:hover:not(.disable-hover){
+        background-color: #f28500; 
+    }
+
+    .button-clear-md-danger{
+        color: #f28500; 
+    }
+
+    .button-clear-md-danger:hover:not(.disable-hover){
+        color: #000; 
+    }
+
+    .arrow-forward{
+        margin-left: 8px; 
+    }
+
+    .coupon{
+        height: 1.8em;
+        background-color: #f28500; 
+        margin-top: 15px;
+    }
+
+    .coupon-p{
+        font-size: 1.7rem;
+        font-weight: bold; 
+        color: #000;
+        margin-top: 10px;
+        margin-left: 17px;
+        margin-bottom: -10px;
+        padding-right: 8px;
+    }
+
+    .badge-md-dark {
+        position: relative;
+        z-index: 9999;
+        right:  30px; 
+        bottom: 35px;
+        background-color: #f28500; 
+    }
+
+    ion-fab[top] {
+        top: -8px;
+        left: -5px;
+    }
+
+    .dele{
+        color: #fff;
+    }
+
+    .cart .button-md-danger, 
+    .button-md-danger:hover:not(.disable-hover), 
+    .fab-md-danger.activated, .fab-md-danger{
+       background-color: #000; 
+    }
+
+}

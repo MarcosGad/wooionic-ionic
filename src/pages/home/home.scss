@@ -1,0 +1,190 @@
+page-home {
+
+    ion-card{
+        margin: 0 !important; 
+        width: 100% !important; 
+    }
+
+    .toolbar-title-md{
+        padding: 0; 
+        font-weight: bold; 
+        font-size: 30px; 
+    }
+
+    .nav{
+        color:#f28500;
+    }
+
+    .toolbar-md-danger .toolbar-background-md{
+        background: #000;
+    }
+
+    .bar-button-default-md:hover:not(.disable-hover), .bar-button-clear-md-default:hover:not(.disable-hover),
+    .bar-button-md-default:hover:not(.disable-hover){
+        color: #f28500; 
+    }
+
+    .button-outline-md-danger,
+    .button-outline-md-danger:hover:not(.disable-hover){
+        background-color: #f28500 !important; 
+        color: #fff; 
+        border-color: #f28500; 
+    }
+
+    .button-outline-md-danger{
+        margin: auto; 
+    }
+
+    .item-md-danger, .item-divider-md-danger{
+        background-color: #f28500;
+    }
+
+    .item-md-light, .item-divider-md-light{
+        background-color: #f28500; 
+    }
+    
+    .card-h {
+        background-color: #000; 
+        padding: 3px;
+        padding-right: 10px; 
+    }
+
+    .card-md h2{
+        color: #fff; 
+        font-weight: bold;
+        font-size: 18px;
+        display: inline-block;
+    }
+
+    .productsbycatt-price{
+        font-weight: bold; 
+        padding-bottom: 8px; 
+        display: block; 
+        font-size: 12px;
+        color: #f28500
+    }
+   
+    .productsbycatt-price del{
+        color: #000;
+    }
+
+    .productsbycatt-price ins{
+        color: #f28500;
+    }
+
+    .span-sale{
+      position: absolute; 
+      top: 0; 
+      right: 0;
+      padding: 6px;
+      border: 1px solid #f28500; 
+      display: block; 
+      background-color: #f28500; 
+      color: #fff; 
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .heart{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 4px;
+        display: block;
+        color: #000;
+        font-size: 17px;
+     }
+
+    .view{
+        position: absolute;
+        left: 15px;
+    }
+
+    ion-app.md [padding] {
+        padding: 3px;
+    }
+
+    .card-md h1{
+        font-size: 2rem;
+    }
+
+    .footer-p{
+        text-align: center; 
+        color: #fff; 
+        font-weight: bold;
+    }
+
+    ul {
+        text-align: center;
+        padding-right: 0;
+    }
+      
+    ul li {
+        list-style: none;
+        width: 40px;
+        height: 40px;
+        line-height: 20px;
+        background: #f28500;
+        text-align: center;
+        font-size: 20px;
+        color: #fff;
+        border-radius: 110%;
+        margin-left: 5px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    .fab, .facebook-square, .instagram, .twitter{
+        color: #fff;
+        font-size: 20px;
+        line-height: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .copy{
+        color: #f28500; 
+    }
+
+    .button-outline-md-danger{
+        width: 95% !important; 
+        margin-bottom: 10px;
+    }
+
+    .badge-md-dark {
+        position: relative;
+        z-index: 9999;
+        right:  25px; 
+        bottom: 30px;
+        background-color: #f28500; 
+    }
+
+    ion-fab[top] {
+        left: 0px;
+    }
+
+    .cart .button-md-danger, 
+    .button-md-danger:hover:not(.disable-hover), 
+    .fab-md-danger.activated, .fab-md-danger{
+       background-color: #000; 
+    }
+
+    .dele{
+        color: #fff;
+    }
+
+    .select-btn{
+        background-color: #f28500;
+        border-color: #f28500;
+        color: #fff;
+    }
+
+    .span-outofstock{
+        text-align: center;
+        border: 1px solid #f28500;
+        line-height: 1;
+        padding: 4px;
+    }
+
+}
+

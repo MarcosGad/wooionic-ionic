@@ -1,0 +1,41 @@
+page-signup {
+
+    .toolbar-title-md{
+        padding: 0; 
+    }
+
+    .error{
+        color: red; 
+    }
+
+    .toolbar-background-md{
+        background-color: #000; 
+    }
+     
+    .toolbar-title-md,.bar-button-default-md{
+        color: #fff; 
+    }
+
+    .bar-button-default-md:hover:not(.disable-hover), 
+    .bar-button-clear-md-default:hover:not(.disable-hover),
+    .bar-button-md-default:hover:not(.disable-hover){
+        color: #fff; 
+    }
+
+    .button-md-danger,
+    .button-md-danger:hover:not(.disable-hover){
+        background-color: #f28500; 
+    }
+
+    a[disabled], button[disabled],
+    [ion-button][disabled],.button-md-danger{
+        width: 80%;
+        margin: auto;
+        margin-top: auto;
+        margin-top: 15px;
+    }
+
+
+
+
+}

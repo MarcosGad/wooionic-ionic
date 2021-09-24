@@ -1,0 +1,28 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>تسجيل الدخول</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<ion-list>
+    <form [formGroup]="todo">
+            <ion-item>
+              <ion-input placeholder="البريد الالكترونى أو اسم المستخدم" dir="rtl" formControlName="username" type="text" [(ngModel)]="username"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="كلمة السر" dir="rtl" formControlName="password" type="password" [(ngModel)]="password"></ion-input>
+            </ion-item>
+
+            <p class="forget-p" (click)="goforget()">نسيت كلمة المرور؟</p>
+
+          <button [disabled]="!todo.valid" class="login-btn" ion-button color="danger" (click)="login()">نسجيل الدخول</button>
+
+        </form>
+</ion-list>
+    
+<button ion-button clear block color="danger" (click)="gosin()">لا يوجد حساب؟ سجل هنا</button>
+
+</ion-content>

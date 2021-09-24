@@ -1,0 +1,46 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>الملف الشخصى</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <p class="img-av">
+        <img src="./assets/images/av.jpg"/>
+    </p>
+
+    <ion-list>
+        <form novalidate [formGroup]="user">
+          <ion-item>
+            <ion-label>الأسم الأول *</ion-label>
+            <ion-input type="text"  formControlName="reqone"  [(ngModel)]="newEdituser.first_name"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>الأسم الثانى *</ion-label>
+            <ion-input type="text"  formControlName="reqtwo"  [(ngModel)]=newEdituser.last_name></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>البريد الألكترونى *</ion-label>
+            <ion-input  readonly  formControlName="reqthree"  type="email" [(ngModel)]=newEdituser.email></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>أسم المستخدم *</ion-label>
+              <ion-input readonly  formControlName="reqfour"  type="text" [(ngModel)]=newEdituser.username></ion-input>
+          </ion-item>
+        
+          <ion-item>
+              <ion-label>كلمة السر الجديدة</ion-label>
+              <ion-input  type="password" formControlName="password"  [(ngModel)]="newEdituser.password"></ion-input>
+          </ion-item>
+
+          <button class="edit-btn" [disabled]="user.invalid" ion-button block color="danger" (click)="edit()">تعديل</button>
+
+    </form>
+  </ion-list>
+
+</ion-content>

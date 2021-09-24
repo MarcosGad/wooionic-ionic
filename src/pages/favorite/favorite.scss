@@ -1,0 +1,111 @@
+page-favorite {
+
+    .icon-span{
+        margin-top: 12px;
+        display: inline-block;
+        font-size: 20px;
+        color: #000; 
+    }
+
+    .icon-span-one{
+        margin-right: 5px;
+    }
+
+    .grid{
+        padding: 0; 
+    }
+
+    .productsbycatt-price{
+        font-weight: bold; 
+        padding-bottom: 8px; 
+        display: block; 
+        font-size: 14px;
+        color: #f28500;
+    }
+    
+    .productsbycatt-price del{
+        color: #000;
+    }
+
+    .productsbycatt-price ins{
+        color: #f28500;
+    }
+
+    .button-outline-md-danger,
+    .button-outline-md-danger:hover:not(.disable-hover){
+        background-color: #f28500 !important; 
+        color: #fff; 
+        border-color: #f28500; 
+    }
+
+    .item-md ion-thumbnail ion-img, 
+    .item-md ion-thumbnail img{
+        width: 100px;
+        height: 100px; 
+    }
+
+    .select-btn{
+        background-color: #fff;
+        border-color: #000;
+        color: #000;
+    }
+    
+    .card-md{
+        margin: 8px; 
+    }
+
+    .icon-active{
+        color: #f28500; 
+    }
+
+    h2,.item-md h2 {
+      font-size: 1.8rem;
+    }
+
+    .span-sale{
+        position: absolute; 
+        top: 5px; 
+        padding: 6px;
+        border: 1px solid #f28500; 
+        display: block; 
+        background-color: #f28500; 
+        color: #fff; 
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      .dele{
+        color: #fff;
+      }
+
+      .button-md-danger,
+      .button-md-danger:hover:not(.disable-hover),
+      .fab-md-danger.activated,
+      .fab-md-danger{
+          background-color: #f28500; 
+      }
+
+    .badge-md-dark {
+        position: relative;
+        z-index: 9999;
+        right:  30px; 
+        bottom: 35px;
+        background-color: #f28500; 
+    }
+
+    ion-fab[top] {
+        top: 6px;
+        left: -5px;
+    }
+
+    .cart .button-md-danger, 
+    .button-md-danger:hover:not(.disable-hover), 
+    .fab-md-danger.activated, .fab-md-danger{
+       background-color: #000; 
+    }
+    
+    .grid{
+        padding: 10px; 
+    }
+
+}

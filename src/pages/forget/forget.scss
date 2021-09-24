@@ -1,0 +1,31 @@
+page-forget {
+
+    .bar-button-default-md,.bar-button-default-md:hover:not(.disable-hover), 
+    .bar-button-clear-md-default:hover:not(.disable-hover),
+    .bar-button-md-default:hover:not(.disable-hover){
+        color: #fff;
+     }
+
+     .forget-btn{
+        width: 80%;
+        display: block;
+        margin: auto;
+        background-color: #f28500; 
+        margin-top: 25px; 
+    }
+
+    .forget-p{
+        padding: 10px; 
+        font-size: 16px; 
+    }
+
+    .item-md{
+        width: 90%;
+        margin: auto;
+    }
+
+    .button-md-danger:hover:not(.disable-hover){
+        background-color: #f28500; 
+    }
+
+}

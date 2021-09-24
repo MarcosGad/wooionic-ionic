@@ -1,0 +1,69 @@
+
+<ion-header>
+    <ion-navbar hideBackButton="true">
+      <button color="danger" ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  
+      <ion-title>قائمة امنياتى </ion-title>
+
+      <ion-fab left top (click)="openCart()">
+        <ion-badge color="dark">{{ nbstatic }}</ion-badge>
+        <button ion-fab color="danger"><ion-icon class="cart" name="cart"></ion-icon></button>
+    </ion-fab>
+
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+
+  
+    <ion-fab left bottom (click)="openHomePage()">
+        <button ion-fab color="danger"><ion-icon name="home"></ion-icon></button>
+    </ion-fab>
+   
+    <ion-grid>
+        <ion-row>        
+          <ion-col col-6 *ngFor="let item of product_favorite; let i = index"  text-wrap>
+              
+                <ion-thumbnail item-left (click)="openProductPage(item.product)">
+                      <img [src]="item.product.images[0].src" />
+                </ion-thumbnail>
+                <h2>{{item.product.name}}</h2>
+
+                <p>
+                  <span [innerHTML]="item.product.short_description"></span>
+                  <span class="productsbycatt-price" [innerHTML]="item.product.price_html"></span>
+                  <span class="span-sale" *ngIf="item.product.on_sale"> تخفضيات </span>
+                </p>
+
+                <span *ngIf="item.product.in_stock">
+                  <button style="display: inline-block; width: 60% !important;" *ngIf="item.product.variations.length == 0" ion-button icon-left block outline color="danger" (click)="addToCartTwo(item.product, qty)">
+                       <span> أضف الى العربة </span>
+                  </button>
+              </span>
+        
+              <span *ngIf="item.product.in_stock">
+                      <button  style="display: inline-block; width: 60% !important;" *ngIf="item.product.variations.length > 0"  ion-button icon-left block outline color="danger" (click)="openProductPage(item.product)">
+                           <span> التفاصيل </span>
+                      </button>
+              </span>
+        
+        
+              <ion-col col-8 *ngIf="!item.product.in_stock">
+                <button style="display: inline-block; width: 60% !important;" ion-button icon-left block outline color="danger">
+                  <span> المنتج غير متوفر </span>
+                </button>      
+              </ion-col>
+              
+              <button (click)="removeFav(item.product,i)"  style="background-color: #000 !important; border-color: #000; width:42px !important;" ion-button outline color="danger">
+                <span class="dele"><ion-icon name="trash"></ion-icon></span>
+              </button>
+
+             
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

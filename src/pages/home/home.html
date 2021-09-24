@@ -1,0 +1,178 @@
+
+<ion-header>
+    <ion-navbar color="danger" hideBackButton="true">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>اتسوق
+  
+          <ion-fab left top (click)="openCart()">
+              <ion-badge color="dark">{{ nbstatic }}</ion-badge>
+              <button ion-fab color="danger"><ion-icon class="cart" name="cart"></ion-icon></button>
+          </ion-fab>
+          
+      </ion-title>
+    </ion-navbar>
+  
+      <ion-toolbar color="danger">
+        <ion-searchbar placeholder="أبحث من هنا" [(ngModel)]="searchQuery" (change)="onSearch($event)"></ion-searchbar>
+      </ion-toolbar>
+  </ion-header>
+  
+  <ion-content no-padding *ngIf="!isOnline">
+
+    <ion-grid>
+      <ion-row> 
+        <ion-slides #productSlides loop="true" dir="ltr" pager="true">
+          <ion-slide>
+            <ion-card no-padding (click)="openCategory(223)">
+              <img src="./assets/images/one.jpg"/>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card no-padding (click)="openCategory(219)">
+              <img src="./assets/images/two.jpg"/>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card no-padding (click)="openCategory(223)">
+              <img src="./assets/images/three.jpg"/>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 (click)="openCategory(223)">
+          <img src="./assets/images/1.png"/>
+        </ion-col>
+        <ion-col col-6 (click)="openCategory(219)"> 
+          <img src="./assets/images/2.jpg"/> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    
+  <ion-card class="card-h">
+    <h2> التصنيفات </h2>
+  </ion-card>
+  
+    <ion-grid style="padding: 0">
+      <ion-row>
+        <ion-col col-4 (click)="openCategory(223)">
+          <img src="./assets/images/أدوات مكتبية.jpg"/>
+        </ion-col>
+        <ion-col col-4 (click)="openCategory(225)"> 
+          <img src="./assets/images/كتب.jpg"/> 
+        </ion-col>
+        <ion-col col-4 (click)="openCategory(229)"> 
+          <img src="./assets/images/لوازم مكتبية.jpg"/>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-4 (click)="openCategory(227)">
+          <img src="./assets/images/منتجات ورقية.jpg"/> 
+        </ion-col>
+        <ion-col col-4 (click)="openCategory(219)"> 
+          <img src="./assets/images/الكترونيات.jpg"/>
+        </ion-col>
+        <ion-col col-4 (click)="openCategory(221)"> 
+          <img src="./assets/images/اكسسوارات الكمبيوتر.jpg"/> 
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  <div *ngIf="recently_viewed?.length > 0"> 
+  
+    <ion-card class="card-h">
+            <h2> شوهدت مؤخرا </h2>
+    </ion-card>
+    
+    <ion-grid>
+      <ion-row>
+        <ion-slides slidesPerView="2"  dir="ltr">
+          <ion-slide *ngFor="let item of recently_viewed; let i = index">
+            <ion-card no-padding>
+              <img [src]="item.product.images[0].src" (click)="openProductPage(item.product)"/>
+              <h1 center>{{ item.product.name }}</h1>
+              <p center [innerHTML]="item.product.short_description"></p>
+              <span class="productsbycatt-price" [innerHTML]="item.product.price_html"></span>
+              <span class="span-sale" *ngIf="item.product.on_sale"> تخفضيات </span>
+                   
+              <button (click)="removeRecentlyViewed(i)" style="background-color: #000 !important; border-color: #000; width:60px !important;" ion-button outline color="danger">
+                  <span class="dele"><ion-icon name="trash"></ion-icon></span>
+              </button>
+
+              <span *ngIf="item.product.in_stock">
+                  <button style="display: inline-block; width: 60% !important;" *ngIf="item.product.variations.length == 0" ion-button icon-left block outline color="danger" (click)="addToCartTwo(item.product, qty)">
+                       <span> أضف الى العربة </span>
+                  </button>
+              </span>
+        
+              <span *ngIf="item.product.in_stock">
+                      <button  style="display: inline-block; width: 60% !important;" *ngIf="item.product.variations.length > 0"  ion-button icon-left block outline color="danger" (click)="openProductPage(item.product)">
+                           <span> التفاصيل </span>
+                      </button>
+              </span>
+        
+        
+              <ion-col col-8 *ngIf="!item.product.in_stock">
+                <button style="display: inline-block; width: 57% !important;" ion-button icon-left block outline color="danger">
+                  <span> المنتج غير متوفر </span>
+                </button>      
+              </ion-col>
+         
+  
+              <span class="heart" *ngIf="item.product.is_favorite" (click)="removeFav(item.product,i)"><ion-icon name="heart"></ion-icon> </span>
+              <span class="heart" *ngIf="!item.product.is_favorite" (click)="addFav(item.product)"><ion-icon name="heart-outline"></ion-icon> </span>
+  
+              
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
+    </ion-grid>
+    
+  </div>
+  
+  
+  <ion-toolbar>
+  
+      <p class="footer-p">
+        Hadyek Elkobba, Cairo, Egypt
+        <i class="fas fa-map-marker-alt"></i>
+      </p>
+  
+      <p class="footer-p">
+          atswaq@gmail.com
+        <i class="fas fa-envelope"></i>
+      </p>
+  
+      <p class="footer-p">
+        201275527489+
+        <ion-icon class="call" name="call"></ion-icon>
+      </p>
+      
+      <ul>
+          <a href="" ><li><i class="fab fa-facebook-square"></i></li></a>
+          <a href="" ><li><i class="fab fa-instagram"></i></li></a>
+          <a href="" ><li><i class="fab fa-twitter"></i></li> </a>
+      </ul>
+  
+      <p class="footer-p">
+          Copyright &copy; <span class="copy">{{data}} Atswaq.com</span>
+      </p>
+  
+      <p class="footer-p">
+          All Rights Reserved
+      </p>
+  
+  </ion-toolbar>
+  
+  </ion-content>
+
+  

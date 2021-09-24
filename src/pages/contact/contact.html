@@ -1,0 +1,45 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>اتصل بنا</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <div #map id="map"></div>
+    <p class="contact-p">
+      <i class="fas fa-map-marker-alt"></i>
+      Hadyek Elkobba, Cairo, Egypt
+    </p>
+    
+    <p class="contact-p">
+      <i class="fas fa-envelope"></i>
+      atswaq@gmail.com
+    </p>
+
+    <p class="contact-p">
+      <ion-icon class="call" name="call"></ion-icon>
+      201275527489+
+    </p>
+
+     
+    <ul>
+      <a href="" ><li><i class="fab fa-facebook-square"></i></li></a>
+      <a href="" ><li><i class="fab fa-instagram"></i></li></a>
+      <a href="" ><li><i class="fab fa-twitter"></i></li></a>
+    </ul>
+
+   <form [formGroup]="todo">
+
+      <ion-input dir="rtl" formControlName="name" placeholder="اسم" type="text" [(ngModel)]="subject"></ion-input>
+ 
+      <ion-input dir="rtl" formControlName="email" placeholder="البريد الالكترونى" type="email" [(ngModel)]="recipient"></ion-input>
+
+      <ion-textarea dir="rtl" formControlName="message" placeholder="رسالتك" [(ngModel)]="message"></ion-textarea>
+
+    <button [disabled]="!todo.valid" class="send-btn" ion-button color="danger" (click)="send()">ارسال</button>
+   
+  </form>
+
+</ion-content>

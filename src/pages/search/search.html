@@ -1,0 +1,126 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>
+          <ion-toolbar color="danger">
+              <ion-searchbar placeholder="أبحث من هنا" [(ngModel)]="searchQuery" (change)="onSearch($event)"></ion-searchbar>
+          </ion-toolbar>
+      </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content no-padding (ionScroll)="scrollFunction($event)">
+
+    <ion-fab right bottom *ngIf="isShown">
+        <button ion-fab color="darkroyal" (click)="pageScroller()">
+        <ion-icon name="ios-arrow-up"></ion-icon></button>
+    </ion-fab>
+   
+    <ion-card>
+        <ion-grid>
+            <ion-row>  
+              <ion-col col-10 class="col-head"></ion-col>
+
+              <ion-col col-2 *ngIf="!isToggled">
+                  <a class="icon-span icon-span-one icon-active" (click)="notifyList()"><i class="fas fa-align-justify"></i></a>
+                  <a class="icon-span" (click)="notifyGrid()"><i class="fas fa-th-large"></i></a>
+              </ion-col>
+    
+              <ion-col col-2 *ngIf="isToggled">
+                  <a class="icon-span icon-span-one" (click)="notifyList()"><i class="fas fa-align-justify"></i></a>
+                  <a class="icon-span icon-active" (click)="notifyGrid()"><i class="fas fa-th-large"></i></a>
+              </ion-col>
+    
+            </ion-row>
+        </ion-grid>
+      </ion-card>
+
+<div *ngIf="!showProductNotfound">
+
+     <ion-list *ngIf="!isToggled">
+
+        <ion-item *ngFor="let product of products; let i = index" text-wrap>
+
+            <ion-thumbnail item-left (click)="openProductPage(product)">
+               <img [src]="product.images[0].src" />
+            </ion-thumbnail>
+            <h2>{{product.name}}</h2>
+            <p>
+            <span [innerHTML]="product.short_description"></span>
+            <span class="productsbycatt-price" [innerHTML]="product.price_html"></span>
+            <span class="span-sale" *ngIf="product.on_sale"> تخفضيات </span>
+            </p>
+              
+              <span *ngIf="product.in_stock">
+              <button *ngIf="product.variations.length == 0" ion-button icon-left block outline color="danger" (click)="addToCartTwo(product, qty)">
+                  <span> أضف الى العربة </span>
+              </button>
+              </span>
+
+              <span *ngIf="product.in_stock">
+                  <button *ngIf="product.variations.length > 0"  ion-button icon-left block outline color="danger" (click)="openProductPage(product)">
+                       <span> التفاصيل </span>
+                  </button>
+              </span>
+
+              <p class="select-btn span-outofstock" *ngIf="!product.in_stock">
+                <span> المنتج غير متوفر </span>
+              </p>
+
+              <span class="heart" *ngIf="product.is_favorite" (click)="removeFav(product,i)"><ion-icon name="heart"></ion-icon> </span>
+              <span class="heart" *ngIf="!product.is_favorite" (click)="addFav(product)"><ion-icon name="heart-outline"></ion-icon> </span>
+
+        </ion-item>
+
+    </ion-list>
+
+
+    <ion-grid *ngIf="isToggled">
+        <ion-row>        
+          <ion-col col-6 *ngFor="let product of products; let i = index" text-wrap>
+                <ion-thumbnail item-left (click)="openProductPage(product)">
+                      <img [src]="product.images[0].src" />
+                </ion-thumbnail>
+                <h2>{{product.name}}</h2>
+                <p>
+                  <span [innerHTML]="product.short_description"></span>
+                  <span class="productsbycatt-price" [innerHTML]="product.price_html"></span>
+                  <span class="span-sale-two" *ngIf="product.on_sale"> تخفضيات </span>
+                </p>
+                  
+                <span *ngIf="product.in_stock">
+                  <button *ngIf="product.variations.length == 0" ion-button icon-left block outline color="danger" (click)="addToCartTwo(product, qty)">
+                      <span> أضف الى العربة </span>
+                  </button>
+                </span>
+
+                <span *ngIf="product.in_stock">
+                    <button *ngIf="product.variations.length > 0"  ion-button icon-left block outline color="danger" (click)="openProductPage(product)">
+                         <span> التفاصيل </span>
+                    </button>
+                </span>
+
+                  <p class="select-btn span-outofstock padding-outofstock" *ngIf="!product.in_stock">
+                    <span> المنتج غير متوفر </span>
+                  </p>
+
+              <span class="heart" *ngIf="product.is_favorite" (click)="removeFav(product,i)"><ion-icon name="heart"></ion-icon> </span>
+              <span class="heart" *ngIf="!product.is_favorite" (click)="addFav(product)"><ion-icon name="heart-outline"></ion-icon> </span>
+
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-infinite-scroll (ionInfinite)="loadMoreProducts($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</div>
+    <ion-list *ngIf="showProductNotfound">
+      <p class="productsNotfound-p"> لا توجد منتجات </p>
+    </ion-list>
+
+  </ion-content>

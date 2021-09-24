@@ -1,0 +1,56 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>انشاء حساب</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+
+    <form novalidate [formGroup]="user">
+
+        <ion-item>
+            <ion-label>الأسم الأول</ion-label>
+            <ion-input dir="rtl" formControlName="req" type="text" [(ngModel)]="newUser.first_name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>الأسم الأخير</ion-label>
+            <ion-input dir="rtl" formControlName="req" type="text" [(ngModel)]="newUser.last_name"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>البريد الألكترونى</ion-label>
+            <ion-input dir="rtl" formControlName="req" type="email" [(ngModel)]="newUser.email" (blur)="checkEmail()"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>اسم المستخدم</ion-label>
+            <ion-input dir="rtl" formControlName="req" type="text" [(ngModel)]="newUser.username"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>كلمة السر</ion-label>
+              <ion-input dir="rtl"  type="password" formControlName="password" [(ngModel)]="newUser.password"></ion-input>
+          </ion-item>
+
+        <ion-item>
+            <ion-label>اعادة كلمة السر</ion-label>
+            <ion-input dir="rtl" formControlName="re_password" type="password" [(ngModel)]="newUser.confirm_password"></ion-input>
+        </ion-item>
+
+        
+        <ion-item no-lines *ngIf="( user.get('re_password').hasError('equalTo') || user.get('re_password').hasError('required') ) && user.get('re_password').touched">
+        <div class="error" *ngIf="user.get('re_password').hasError('equalTo') && user.get('re_password').touched">
+          كلمة المرور غير متطابقة
+        </div>
+        </ion-item>
+
+        <button [disabled]="user.invalid" ion-button block color="danger" (click)="signup()">تسجيل</button>
+                
+      
+      </form>             
+</ion-content>
+
+

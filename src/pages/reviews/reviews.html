@@ -1,0 +1,112 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>التعليقات</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <p class="reviews-p">التقييمات والمراجعات</p>  
+        <ion-grid>
+           <ion-row>
+             <ion-col col-4>
+               <div class="re-star">
+                  <span class="re-span">{{product.average_rating}}</span>
+                  <ion-icon style="color: #efce4a; font-size: 30px;" small name="star"></ion-icon>
+               </div>
+             </ion-col>
+             <ion-col>
+                <div class="cont-re"> 
+                   <p>{{reviewser}} تقيم</p>
+                </div>
+              </ion-col>
+           </ion-row>
+        </ion-grid>
+      </ion-list>
+
+  <form [formGroup]="todo">
+    <ion-list>
+          <p class="reviews-p">التعليق على هذا المنتج</p>  
+          
+          <ion-label class="rating-p">تقييمك</ion-label>
+          <div class="ionic3-star-rating">
+            <button *ngFor="let index of [0,1,2,3,4]" id="{{index}}" type="button" ion-button icon-only (click)="changeRating($event)">
+              <ion-icon [ngStyle]="{'color':index < this.Math.round(this.parseFloat(rating)) ? activeColor : defaultColor }" name="{{index < this.Math.round(this.parseFloat(rating)) ? activeIcon : defaultIcon}}"></ion-icon>
+            </button>
+          </div>
+
+          <ion-item>
+              <ion-input placeholder="تعليقك" dir="rtl" formControlName="reviewtxt" type="text" [(ngModel)]="newRe.review"></ion-input>
+          </ion-item>
+          <button class="reviews-btn" [disabled]="!todo.valid" ion-button color="danger" block (click)="newRee()">ارسال</button>
+    </ion-list>
+  </form>
+
+  <ion-list>
+        <ion-grid>
+          <ion-row *ngFor="let review of reviews">
+            <ion-col col-2>
+              <img class="img-av" src="./assets/images/av.jpg"/>
+            </ion-col>
+            <ion-col col-10>
+              <b>{{ review.name }}</b><br/>
+  
+              <span *ngIf="review.rating == 0">
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+               </span>
+  
+               <span *ngIf="review.rating == 1">
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+               </span>
+  
+               <span *ngIf="review.rating == 2">
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+               </span>
+  
+               <span *ngIf="review.rating == 3">
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+               </span>
+  
+               <span *ngIf="review.rating == 4">
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #ddd" small name="star"></ion-icon>
+               </span>
+  
+               <span *ngIf="review.rating == 5">
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+                  <ion-icon style="color: #efce4a" small name="star"></ion-icon>
+               </span>
+  
+            <span [innerHTML]="review.date_created.substr(0, 10)"></span> <span class="time" [innerHTML]="review.date_created.substr(12, 17)"></span>
+
+             <p class="p-review">{{ review.review }}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-list>
+  
+</ion-content>

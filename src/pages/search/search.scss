@@ -1,0 +1,145 @@
+page-search {
+
+    .toolbar-title-md{
+        padding: 0; 
+    }
+
+    .toolbar-md-danger .toolbar-background-md,
+    .toolbar-background-md{
+        background-color: #000; 
+    }
+
+    .toolbar-title-md,.bar-button-default-md{
+        color: #fff; 
+    }
+
+    .bar-button-default-md:hover:not(.disable-hover), 
+    .bar-button-clear-md-default:hover:not(.disable-hover),
+    .bar-button-md-default:hover:not(.disable-hover){
+        color: #fff; 
+    }
+
+    .toolbar-md{
+        padding: 0; 
+    }
+
+    .productsNotfound-p{
+        font-size: 17px;
+        position: absolute;
+        top: 40%;
+        left: 40%;
+    }
+
+    .heart{
+        position: absolute;
+        top: 0;
+        left: 10px;
+        padding: 4px;
+        display: block;
+        color: #000;
+        font-size: 17px;
+     }
+
+    .icon-span{
+        display: inline-block;
+        font-size: 20px;
+        color: #000; 
+    }
+
+    .icon-span-one{
+        margin-right: 5px;
+    }
+
+    .grid{
+        padding: 0; 
+    }
+
+    .productsbycatt-price{
+        font-weight: bold; 
+        padding-bottom: 8px; 
+        display: block; 
+        font-size: 14px;
+        color: #f28500
+    }
+    
+    .productsbycatt-price del{
+        color: #000;
+    }
+
+    .productsbycatt-price ins{
+        color: #f28500;
+    }
+
+    .button-outline-md-danger,
+    .button-outline-md-danger:hover:not(.disable-hover){
+        background-color: #f28500 !important; 
+        color: #fff; 
+        border-color: #f28500; 
+    }
+
+    .item-md ion-thumbnail ion-img, 
+    .item-md ion-thumbnail img{
+        width: 100px;
+        height: 100px; 
+    }
+
+    .select-btn{
+        background-color: #f28500;
+        border-color: #f28500;
+        color: #fff;
+    }
+
+    .icon-active{
+        color: #f28500; 
+    }
+
+    h2,.item-md h2 {
+      font-size: 1.8rem;
+    }
+
+    .Options-font{
+        font-size: 12px; 
+    }
+
+    .card-md{
+        margin: 8px; 
+    }
+    
+    .span-sale{
+        position: absolute; 
+        top: 8px; 
+        right: 16px;
+        padding: 6px;
+        border: 1px solid #f28500; 
+        display: block; 
+        background-color: #f28500; 
+        color: #fff; 
+        font-weight: bold;
+        font-size: 10px;
+      }
+
+      .span-sale-two{
+        position: absolute; 
+        top: 5px; 
+        right: 5px;
+        padding: 6px;
+        border: 1px solid #f28500; 
+        display: block; 
+        background-color: #f28500; 
+        color: #fff; 
+        font-weight: bold;
+        font-size: 10px;
+      }
+
+    .span-outofstock{
+        text-align: center;
+        border: 1px solid #f28500;
+        line-height: 1;
+        padding: 4px;
+    }
+    
+    .padding-outofstock{
+        padding: 9px; 
+    }
+
+}

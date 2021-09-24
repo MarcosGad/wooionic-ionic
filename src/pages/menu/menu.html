@@ -1,0 +1,101 @@
+<ion-menu [content]="content" persistent = "true">
+
+  <ion-content>
+
+        <ion-item class="bac-item" *ngIf="!loggedIn" menuClose (click)="openPage('login')">
+
+            <p class="icon-av">
+                <ion-icon name="contact" item-left large></ion-icon>
+            </p>
+
+          <h2 class="user-h" > تسجيل الدخول والتسجيل </h2>
+          <h3 class="user-h-two"> الرجاء تسجيل الدخول <br> او انشاء حساب مجانا </h3>
+
+        </ion-item>
+        
+        <ion-item class="bac-item" *ngIf="loggedIn" menuClose>
+
+            <p class="img-av">
+                <img src="./assets/images/av.jpg"/>
+            </p>
+
+          <h2 class="user-h">{{ (this.user.firstname == '' ? this.user.username : this.user.firstname) || "" }}</h2>
+          <h2 class="user-h-two">{{ this.user.email }}</h2>
+
+        </ion-item>
+
+        <span>
+          <ion-item text-wrap (click)="openCategory(223)" menuClose>
+              <ion-icon name="bookmarks" item-left large></ion-icon>
+              <h2> أدوات مكتبية </h2>
+          </ion-item>
+        </span>
+
+        <span>
+          <ion-item text-wrap (click)="openCategory(225)" menuClose>
+              <ion-icon name="ios-arrow-forward" item-left large></ion-icon>
+              <h2> كتب </h2>
+          </ion-item>
+        </span>
+
+        <span>
+          <ion-item text-wrap (click)="openCategory(229)" menuClose>
+              <ion-icon name="ios-arrow-forward" item-left large></ion-icon>
+              <h2> لوازم مكتبية </h2>
+          </ion-item>
+        </span>
+
+        <span>
+          <ion-item text-wrap (click)="openCategory(227)" menuClose>
+              <ion-icon name="ios-arrow-forward" item-left large></ion-icon>
+              <h2> منتجات ورقية </h2>
+          </ion-item>
+        </span>
+
+        <span>
+          <ion-item text-wrap (click)="openCategory(219)" menuClose>
+              <ion-icon name="desktop" item-left large></ion-icon>
+              <h2> الكترونيات </h2>
+          </ion-item>
+        </span>
+
+        <span>
+          <ion-item text-wrap (click)="openCategory(221)" menuClose>
+              <ion-icon name="ios-arrow-forward" item-left large></ion-icon>
+              <h2> اكسسوارات الكمبيوتر </h2>
+          </ion-item>
+        </span>
+
+
+          <ion-item *ngIf="loggedIn"  text-wrap (click)="edituser()" menuClose>
+            <ion-icon name="contact" item-left large></ion-icon>
+            <h2> تعديل الملف الشخصى </h2>
+          </ion-item>
+
+          <ion-item  text-wrap (click)="openFavoritePage()" menuClose>
+            <ion-icon name="heart" item-left large></ion-icon>
+            <h2> قائمة امنياتى </h2>
+          </ion-item>
+
+          <ion-item  text-wrap (click)="openAboutPage()" menuClose>
+            <ion-icon name="information-circle" item-left large></ion-icon>
+            <h2> عن الشركة </h2>
+          </ion-item>
+
+            
+          <ion-item text-wrap (click)="openContactPage()" menuClose>
+              <ion-icon name="call" item-left large></ion-icon>
+              <h2> اتصل بنا </h2>
+          </ion-item>
+
+          <ion-item *ngIf="loggedIn"  text-wrap (click)="openPage('logout')" menuClose>
+              <ion-icon  name="log-out" item-left large></ion-icon>
+              <h2> الخروج </h2>
+        </ion-item>
+
+      
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav #content [root]="homePage"></ion-nav>

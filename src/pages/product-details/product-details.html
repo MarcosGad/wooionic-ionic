@@ -1,0 +1,269 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title> {{ product.name }} 
+
+      <ion-fab left top (click)="openCart()">
+        <ion-badge color="dark">{{ nbstatic }}</ion-badge>
+        <button ion-fab color="danger"><ion-icon class="cart" name="cart"></ion-icon></button>
+    </ion-fab>
+
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    
+  <ion-card>
+    <ion-slides autoplay="3000" loop="true"  dir="ltr">
+      <ion-slide *ngFor="let image of product.images">
+        <img [src]="image.src" />
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content>
+      <ion-card-title>
+
+          <p class="product-name">{{ product.name }} 
+              <span class="heart" *ngIf="product.is_favorite" (click)="removeFavproduct(product)"><ion-icon name="heart"></ion-icon> </span>
+              <span class="heart" *ngIf="!product.is_favorite" (click)="addFavproduct(product)"><ion-icon name="heart-outline"></ion-icon> </span>
+          </p>
+
+          <span class="stars alignright">
+              <span  [ngStyle]="{'width': getStars()}"></span>
+          </span> <br>
+      
+        <p *ngFor="let category of product.categories"><span> قسم : <span class="cat-name">{{ category.name }}</span> </span></p>
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+      <ion-card-content *ngIf="product.variations.length > 0">
+          <p>{{ requireOptions ? 'حدد خيارات المنتج' : 'السعر:' + ' ' +  productPrice + ' ' + 'EGP' }}</p>
+      </ion-card-content>
+    </ion-card>
+
+      <ion-card>
+        <ion-card-content *ngIf="product.variations.length == 0">
+          السعر : <span class="productsbycatt-price" [innerHTML]=" product.price_html"></span>
+        </ion-card-content>
+      </ion-card>
+
+      
+      <ion-card *ngIf="product.in_stock">
+        <ion-card-content>
+              <span>متوفر من هذا المنتج :  <span class="qty-number">{{ product.stock_quantity }} </span> </span>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="!product.in_stock">
+        <ion-card-content>
+              <span class="product-not">المنتج غير متوفر</span>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="product.variations.length == 0">
+        <ion-card-content>
+            <ion-row no-padding>
+              <ion-col col-9>
+                  <p>الكمية</p>
+                <button ion-button icon-only clear color="danger" (click)="changeQty(qty, i, -1)">
+                  <ion-icon name="remove-circle"></ion-icon>
+                </button>
+                <button ion-button clear color="danger"> {{ qty }} </button>
+                <button ion-button icon-only clear color="danger" (click)="changeQty(qty, i, 1)">
+                  <ion-icon name="add-circle"></ion-icon>
+                </button>
+              </ion-col>
+
+              <ion-col col-3>
+                  <p class="p-titalprice">الأجمالى</p>
+                  <p class="total-titalprice">{{ product.price * qty}} EGP </p>
+              </ion-col>
+
+            </ion-row>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="product.variations.length > 0">
+          <ion-card-content>
+              <ion-row no-padding>
+                <ion-col col-9>
+                    <p>الكمية</p>
+                  <button ion-button icon-only clear color="danger" (click)="changeQty(qty, i, -1)">
+                    <ion-icon name="remove-circle"></ion-icon>
+                  </button>
+                  <button ion-button clear color="danger"> {{ qty }} </button>
+                  <button ion-button icon-only clear color="danger" (click)="changeQty(qty, i, 1)">
+                    <ion-icon name="add-circle"></ion-icon>
+                  </button>
+                </ion-col>
+  
+                <ion-col col-3>
+                    <p class="p-titalprice">الأجمالى</p>
+                    <p class="total-titalprice">{{  productPrice * qty}} EGP </p>
+                </ion-col>
+  
+              </ion-row>
+          </ion-card-content>
+        </ion-card>
+
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+      الوصف
+    </ion-card-title>
+    <p [innerHTML]="product.description"></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="product.variations.length > 0" dir="ltr">
+    <ion-item-divider style="padding-right: 13px" dir="rtl" color="light">خيارات المنتج</ion-item-divider>
+    <ng-container *ngFor="let attribute of product.attributes">
+      <ion-item *ngIf="attribute.variation">
+        <ion-label> {{ attribute.name | titlecase }}</ion-label>
+        <ion-select interface="popover" [(ngModel)]="selectedOptions[attribute.name]" (ionChange)="check(attribute.name)">
+          <ion-option *ngFor="let option of attribute.options" [value]="option">{{ option }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ng-container>
+  </ion-card>
+
+  <ion-card *ngIf="product.attributes.length > 0">
+    <ion-card-content>
+      <ion-card-title>
+          مواصفات
+      </ion-card-title>
+
+      <ion-grid>
+          <ion-row *ngFor="let attr of product.attributes">
+            <ion-col col-4>{{ attr.name }}</ion-col>
+            <ion-col col-8>
+              <span *ngFor="let option of attr.options">
+                {{ option }}
+              </span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </ion-card-content>
+    </ion-card>
+
+  <ion-card (click)="newRee(product,reviewsCot)">
+    <ion-card-content>
+
+    <p *ngIf="!showReviewsCot">
+        <i class="fas fa-spinner fa-spin"></i>
+    </p>
+
+    <div *ngIf="showReviewsCot">
+      <p class="revirw-p">التعليقات</p>
+      <ion-badge color="dark" class="badge-revirw">{{ reviews }}</ion-badge>
+    </div>
+
+    </ion-card-content>
+  </ion-card>
+
+    
+    <p class="p-productsRelated">منتجات ذات صلة</p>
+
+<span style="display: block; margin-bottom: 50px;">
+
+    <ion-grid class="last-gried">
+      <ion-row>        
+        <ion-col col-6 *ngFor="let product of productsRelated; let i = index" text-wrap >
+
+                    <ion-thumbnail (click)="openProductPage(product)">
+                       <img [src]="product.images[0].src"/>
+                    </ion-thumbnail>
+                    <h2>{{product.name}}</h2>
+                    <p>
+                    <span [innerHTML]="product.short_description"></span>
+                    <span  class="productsbycatt-price" [innerHTML]="product.price_html"></span>
+                    </p>
+
+                    <span class="heart-two" *ngIf="product.is_favorite" (click)="removeFav(product,i)"><ion-icon name="heart"></ion-icon> </span>
+                    <span class="heart-two" *ngIf="!product.is_favorite" (click)="addFav(product)"><ion-icon name="heart-outline"></ion-icon> </span>
+
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</span>
+
+  <ion-infinite-scroll (ionInfinite)="loadProductsRelated($event)">
+          <ion-infinite-scroll-content>
+        </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
+<ion-footer  *ngIf="product.variations.length > 0">
+
+    <ion-col col-2>              
+        <button  class="cart-bk-two"  ion-button block color="dark" (click)="call()">
+           <ion-icon name="call"></ion-icon>
+        </button>           
+    </ion-col>
+
+    <ion-col col-2>              
+          <button  class="cart-bk-two"  ion-button block color="dark"  (click)="Share(product)">
+              <ion-icon name="md-share"></ion-icon>
+          </button>           
+    </ion-col>
+
+    <ion-grid>
+      <ion-row>        
+        <ion-col col-8 *ngIf="product.in_stock">
+          <button  class="cart-bk"  ion-button icon-left block outline color="danger" (click)="addToCart(product)">
+             <span> أضف الى العربة  </span>
+          </button>      
+        </ion-col>
+
+        <ion-col col-8 *ngIf="!product.in_stock">
+          <button  class="cart-bk"  ion-button icon-left block outline color="danger">
+            <span> المنتج غير متوفر </span>
+          </button>      
+        </ion-col>
+
+      </ion-row>
+  </ion-grid>
+
+</ion-footer>
+
+<ion-footer *ngIf="product.variations.length == 0">
+    <ion-grid>
+        <ion-row>     
+          
+            <ion-col col-2>              
+                <button class="cart-bk-two" ion-button block color="dark"  (click)="call()"
+                ><ion-icon name="call"></ion-icon>
+                </button>           
+            </ion-col>
+
+            <ion-col col-2>              
+                  <button class="cart-bk-two"  ion-button block color="dark"  (click)="Share(product)"
+                  ><ion-icon name="md-share"></ion-icon>
+                </button>           
+            </ion-col>
+
+            <ion-col col-8 *ngIf="product.in_stock">
+                <button class="cart-bk" ion-button icon-left block outline color="danger" (click)="addToCartTwo(product, qty)">
+                    <span> أضف الى العربة  </span>
+                </button>
+            </ion-col>
+            
+            <ion-col col-8 *ngIf="!product.in_stock">
+              <button  class="cart-bk"  ion-button icon-left block outline color="danger">
+                <span> المنتج غير متوفر </span>
+              </button>      
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+</ion-footer>
+
+
+

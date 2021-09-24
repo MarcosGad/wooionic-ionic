@@ -1,0 +1,65 @@
+page-checkout {
+
+    .toolbar-title-md{
+        padding: 0; 
+    }
+    
+    .toolbar-background-md{
+        background-color: #000; 
+    }
+     
+    .toolbar-title-md,.bar-button-default-md{
+        color: #fff; 
+    }
+
+    .bar-button-default-md:hover:not(.disable-hover), 
+    .bar-button-clear-md-default:hover:not(.disable-hover),
+    .bar-button-md-default:hover:not(.disable-hover){
+        color: #fff; 
+    }
+
+    .button-md-danger,
+    .button-md-danger:hover:not(.disable-hover){
+        background-color: #f28500; 
+    }
+
+    .item-md-danger, .item-divider-md-danger {
+        background-color: #946a37;
+    }
+
+    .checkbox-md .checkbox-checked{
+        border-color: #f28500;
+        background-color: #f28500;
+    }
+    .item.item-md .checkbox-md{
+        margin-right: 8px; 
+    }
+}
+
+.button-md-danger.activated{
+    background-color: #f28500;
+}
+
+.action-sheet-md .action-sheet-title{
+    color: #000;
+    font-weight: bold;
+}
+
+.alert-md [aria-checked="true"] .alert-radio-label{
+    color: #f28500; 
+}
+
+.alert-md .alert-radio-inner,
+.alert-md [aria-checked="true"] .alert-radio-icon{
+    background-color: #f28500; 
+    border-color: #f28500; 
+}
+    
+.alert-md .alert-button .button-inner{
+    color: #000;
+}
+
+.alert-md .alert-button .button-inner:hover{
+    color: #f28500;
+}
+

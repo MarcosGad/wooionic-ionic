@@ -1,0 +1,68 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>رقم الطلب #{{ myorder.id }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card>
+    <ion-item>
+        <p class="color-p">حالة الطلب : <span class="oeder-span span-color"> {{ myorder.status }}  </span> </p>   
+        <p class="color-p">تم إنشاء الطلب في : <span class="oeder-span span-color"  [innerHTML]="myorder.date_created.substr(0, 10)"></span> <span class="oeder-span span-color"  [innerHTML]="myorder.date_created.substr(12, 17)"></span> </p>  
+    </ion-item>
+  </ion-card> 
+  
+  <ion-card>
+    <ion-item>
+        <p class="color-p"> <ion-icon name="locate"></ion-icon> بيانات العنوان </p>
+        <p>{{ myorder.billing.first_name }} {{ myorder.billing.last_name }} </p>
+        <p> <span class="oeder-span"> {{ myorder.billing.phone }} </span> </p>
+        <p> <span class="oeder-span"> {{ myorder.billing.country }} </span> </p>
+        <p> <span class="oeder-span"> {{ myorder.billing.state }} </span> </p>
+        <p> <span class="oeder-span"> {{ myorder.billing.address_1 }} </span> </p>
+    </ion-item>
+  </ion-card> 
+
+   <ion-card *ngIf="myorder.shipping.country">
+    <ion-item>
+        <p class="color-p"> <ion-icon name="locate"></ion-icon> بيانات عنوان الشحن </p>
+        <p>{{ myorder.shipping.first_name }} {{ myorder.shipping.last_name }} </p>
+        <p> <span class="oeder-span"> {{ myorder.shipping.country }} </span> </p>
+        <p> <span class="oeder-span"> {{ myorder.shipping.state }} </span> </p>
+        <p> <span class="oeder-span"> {{ myorder.shipping.address_1 }} </span> </p>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+        <p class="color-p"> <ion-icon name="cash"></ion-icon> طريقة الدفع </p>
+        الدفع عند الاستلام
+    </ion-item>
+  </ion-card>
+
+    <ion-card>
+        <ion-item *ngFor="let product of myproducts">
+          <p class="order-d" class="color-p"> <ion-icon name="copy"></ion-icon> تفاصيل الأوردر </p> 
+          <h2>{{ product.name }}</h2> 
+          <p>{{ product.quantity }} • 
+            <span>{{ product.price }}</span> ----> 
+            <span class="oeder-span span-color">{{ product.total }}</span>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-item>
+           <p>خصم القسيمة : <span class="oeder-span span-color"> {{ discount }}  </span> </p>
+           <p>الأجمالى : <span class="oeder-span span-color"> {{ myorder.total }}  </span> </p>
+        </ion-item>
+    </ion-card>
+
+    <ion-item>
+      <button ion-button block color="danger" (click)="goHome()">تم</button>
+   </ion-item>
+    
+
+</ion-content>

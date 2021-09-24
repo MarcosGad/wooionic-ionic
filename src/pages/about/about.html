@@ -1,0 +1,53 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>عن الشركة</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-card>
+        <ion-item  text-wrap (click)="openShippingPolicyPage()" menuClose>
+          <ion-icon name="arrow-back" item-right large></ion-icon>
+          <h3> سياسة الشحن</h3>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-item  text-wrap (click)="openPrivacyPolicyPage()" menuClose>
+          <ion-icon name="arrow-back" item-right large></ion-icon>
+          <h3>سياسة الخصوصية</h3>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-item text-wrap (click)="openRefundPolicyPage()" menuClose>
+          <ion-icon name="arrow-back" item-right large></ion-icon>
+          <h3>سياسة الاسترداد</h3>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-item  text-wrap (click)="openPaymentPolicyPage()" menuClose>
+          <ion-icon name="arrow-back" item-right large></ion-icon>
+          <h3>سياسة الدفع</h3>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-item  text-wrap (click)="openReturnPolicyPage()" menuClose>
+          <ion-icon name="arrow-back" item-right large></ion-icon>
+          <h3>سياسة الاسترجاع</h3>
+        </ion-item>
+    </ion-card>
+
+  <ion-card>
+    <ion-item  text-wrap (click)="openTermsAndconditionsPage()" menuClose>
+      <ion-icon name="arrow-back" item-right large></ion-icon>
+      <h3> الشروط والأحكام </h3>
+    </ion-item>
+  </ion-card>
+ 
+</ion-content>

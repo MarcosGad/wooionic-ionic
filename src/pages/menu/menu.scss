@@ -1,0 +1,87 @@
+page-menu {
+
+    .p-r{
+        padding-right: 8px; 
+    }
+
+    .item-md{
+        border-bottom: 1px solid #ddd; 
+    }
+
+    .item-md ion-icon[item-left], .item-md ion-icon[item-right], 
+    .item-md ion-icon[item-start], .item-md ion-icon[item-end]{
+        color: #000; 
+    }
+
+    .item-md-danger, .item-divider-md-danger{
+        background-color: #f28500; 
+    }
+
+    ion-icon.icon-contact{
+        font-size: 60px !important;
+    }
+
+    .item-md.item-block .item-inner{
+        border-bottom: none; 
+    }
+
+    .item-md ion-icon[item-left] + .item-inner,
+    .item-md ion-icon[item-left] + .item-input, 
+    .item-md ion-icon[item-start] + .item-inner, 
+    .item-md ion-icon[item-start] + .item-input {
+        margin-left: 8px;
+        margin-top: 7px;
+    }
+
+    .label-md{
+        margin: 0; 
+    }
+
+    .button-md-danger{
+        background-color: #f28500; 
+    }
+
+    .button-md-danger:hover:not(.disable-hover){
+        background-color: #f28500; 
+    }
+
+    .bac-item{
+        color: #fff; 
+        background-image: url('../assets/images/bk.png'); 
+        padding-bottom: 20px;
+    }
+
+    .user-h{
+        display: inline-block;
+        position: absolute;
+        top: 38px;
+        right: 60px;
+        font-weight: bold;
+    }
+
+    .user-h-two{
+        display: inline-block;
+        position: absolute;
+        top: 60px;
+        right: 60px;
+        font-size: 13px; 
+    }
+
+    .img-av {
+        display: inline-block;
+        margin-top: 35px;
+    }
+
+    .icon-av{
+        display: inline-block;
+        margin-top: 28px;
+        font-size: 31px;
+    }
+
+    .img-av img{
+        border-radius: 50%;
+        width: 45px;
+    }
+
+
+}

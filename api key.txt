@@ -1,0 +1,66 @@
+
+      url: "http://www.atswaq.com",
+      consumerKey: "ck_a8095ae678d6f9b3c369121f95cec61a585e0955",
+      consumerSecret: "cs_872c6929fb6865843d8612dac99d9b407379707d",
+
+
+
+      url: "http://localhost/polyshopingpress",
+      consumerKey: "ck_b9acfd1eddf37dd69dfa4fa50888d0ec3cf3b1f9",
+      consumerSecret: "cs_196950f509febb701305d809be71021b45e6bb28",
+
+      
+
+
+
+
+
+
+
+
+	
+ionic-hello-world
+
+
+<ion-card class="card-h" *ngIf="Bestproducts">
+    <h2> الأكثر مبيعا </h2>
+</ion-card>
+
+<ion-grid *ngIf="Bestproducts">
+<ion-row>
+<ion-slides slidesPerView="2" loop="true" dir="ltr">
+  <ion-slide *ngFor="let product of Bestproducts; let i = index" >
+    <ion-card no-padding>
+      <img [src]="product.images[0].src" (click)="openProductPage(product)"/>
+      <h1 center>{{ product.name }}</h1>
+      <p center [innerHTML]="product.short_description"></p>
+      <span class="productsbycatt-price" [innerHTML]="product.price_html"></span>
+      <span class="span-sale" *ngIf="product.on_sale"> تخفضيات </span>
+
+      <span class="heart" *ngIf="product.is_favorite" (click)="removeFav(product,i)"><ion-icon name="heart"></ion-icon> </span>
+      <span class="heart" *ngIf="!product.is_favorite" (click)="addFav(product)"><ion-icon name="heart-outline"></ion-icon> </span>
+
+      <span *ngIf="product.in_stock">
+        <button *ngIf="product.variations.length == 0" ion-button icon-left block outline color="danger" (click)="addToCartTwo(product, qty)">
+             <span> أضف الى العربة </span>
+        </button>
+        </span>
+
+        <span *ngIf="product.in_stock">
+            <button *ngIf="product.variations.length > 0"  ion-button icon-left block outline color="danger" (click)="openProductPage(product)">
+                 <span> التفاصيل </span>
+            </button>
+        </span>
+
+        <span *ngIf="!product.in_stock">
+            <button ion-button icon-left block outline color="danger">
+                 <span> المنتج غير متوفر </span>
+            </button>
+        </span>
+
+    </ion-card>
+  </ion-slide>
+</ion-slides>
+</ion-row>
+</ion-grid>
+

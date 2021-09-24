@@ -1,0 +1,207 @@
+@import "../assets/scss/fontawesome.scss";
+@import "../assets/scss/solid.scss";
+@import "../assets/scss/brands.scss";
+
+
+.map-marker-alt {
+    @extend %fa-icon;
+    @extend .fas;
+  
+    &:before {
+      content: fa-content($fa-var-map-marker-alt);
+    }
+  }
+
+  .envelope {
+    @extend %fa-icon;
+    @extend .fas;
+  
+    &:before {
+      content: fa-content($fa-var-envelope);
+    }
+  }
+
+  .facebook-square {
+    @extend %fa-icon;
+    @extend .fab;
+  
+    &:before {
+      content: fa-content($fa-var-facebook-square);
+    }
+  }
+
+  .instagram {
+    @extend %fa-icon;
+    @extend .fab;
+  
+    &:before {
+      content: fa-content($fa-var-instagram);
+    }
+  }
+
+  .twitter {
+    @extend %fa-icon;
+    @extend .fab;
+  
+    &:before {
+      content: fa-content($fa-var-twitter);
+    }
+  }
+
+  .th-large {
+    @extend %fa-icon;
+    @extend .fas;
+  
+    &:before {
+      content: fa-content($fa-var-th-large);
+    }
+  }
+
+  .align-justify {
+    @extend %fa-icon;
+    @extend .fas;
+  
+    &:before {
+      content: fa-content($fa-var-align-justify);
+    }
+  }
+
+
+
+  
+  @font-face {
+    font-family: MarkaziText;
+    src: url('../assets/fonts/markaziText.woff2') format('woff2')
+  }
+
+
+  *{
+      font-family: MarkaziText;
+  }
+
+  
+  
+
+ html[dir="rtl"] {
+  .back-button-icon.icon-md.back-button-icon-md.ion-md-arrow-back {
+      transform: rotate(180deg);
+  }
+
+  .back-button-icon.icon-ios.back-button-icon-ios.ion-ios-arrow-back {
+      transform: rotate(180deg);
+      padding: 0 5px;
+  }
+}
+
+.loading-md .spinner-crescent circle,
+.infinite-loading-spinner .spinner-ios line, 
+.infinite-loading-spinner .spinner-ios-small line,
+.infinite-loading-spinner .spinner-crescent circle{
+  stroke:#f28500; 
+}
+
+.searchbar-md .searchbar-search-icon, 
+.searchbar-md .searchbar-md-cancel{
+  right: 15px;
+}
+
+.searchbar-md .searchbar-clear-icon{
+  right: 90%;
+}
+
+.searchbar-md .searchbar-input{
+  text-align: right;
+}
+
+.loading-md .loading-wrapper{
+  border-radius: 50%;
+  padding: 15px; 
+}
+
+.item-input-has-focus .label-md[stacked],
+.input-has-focus .label-md[stacked],
+.item-input-has-focus .label-md[floating],
+.input-has-focus .label-md[floating]
+{
+color: #f28500 !important;
+}
+
+.alert-md .alert-radio-icon{
+  right: 13px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f28500 !important;
+}
+
+.button-md-danger.activated{
+  background-color: #ccbfae;
+}
+
+.action-sheet-md .action-sheet-button:hover{
+  color: #f28500; 
+}
+
+.action-sheet-md .action-sheet-selected{
+  color: #f28500; 
+}
+
+span.stars, span.stars span {
+  display: block;
+  background: url('../assets/icon/starwhite.png') 0 -16px repeat-x;
+  width: 80px;
+  height: 16px;
+  direction: ltr;
+}
+
+span.stars span {
+  background-position: 0 0;
+  margin-top: 0;
+}
+
+.alignright {
+  float:right;
+}
+
+.range-md.range-has-pin {
+  padding-top: 20px;
+}
+
+.range-md [range-left]{
+  margin-left: 10px;
+}
+
+.range-md [range-right]{
+  margin-right: 10px; 
+}
+
+.toast-top .toast-container{
+  background-color: #5cb85c; 
+}
+
+.toast-top .toast-message{
+  margin-right: 15px;
+}
+
+
+.toast-css-class {
+  .toast-message:before {
+    font-family: "Ionicons";
+    margin-top: -7px;
+    margin-right: -22px;
+    z-index: 999;
+    position: absolute;
+    font-size: 2.2em;
+    content: "\f3ff";
+    }
+}
+
+.fab-md-darkroyal{
+  background-color: #f28500;
+  font-size: 12px;
+  width: 50px;
+  height: 50px;
+  top: 0;
+}
+
+
